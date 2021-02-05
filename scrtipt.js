@@ -4,12 +4,23 @@ const right = document.getElementById('right');
 
 const img = document.querySelectorAll('#imgs img');
 
-left.addEventListener('click', prev);
-right.addEventListener('click', next);
+left.addEventListener('click', () => {
+  resetInterval();
+  prev();
+});
+right.addEventListener('click', () => {
+  resetInterval();
+  next();
+});
 
 let index = 0;
 
 let interval = setInterval(next, 2000);
+
+function resetInterval() {
+  clearInterval(interval);
+  interval = setInterval(next, 2000);
+}
 
 function next() {
   index++;
